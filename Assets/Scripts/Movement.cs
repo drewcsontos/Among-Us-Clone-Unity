@@ -22,7 +22,6 @@ public class Movement : MonoBehaviour, IPunObservable
     void Start()
     {
         isImposter = false;
-        players = GameObject.FindGameObjectsWithTag("Player");
         script = FindObjectOfType<GameStateScript>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +33,8 @@ public class Movement : MonoBehaviour, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        if(players.Length==0)
+            players = GameObject.FindGameObjectsWithTag("Player");
         if (!photonView.IsMine)
         {
             Destroy(light2d);
@@ -61,7 +62,7 @@ public class Movement : MonoBehaviour, IPunObservable
             int enemyPlayer = Random.Range(0, PhotonNetwork.PlayerList.Length);
             photonView.RPC("setImposter", PhotonNetwork.PlayerList[enemyPlayer]);
         }
-        if (Input.GetKeyDown(KeyCode.E) && isImposter && hasStartedGame == true && players.Length != 0)
+        if (Input.GetKeyDown(KeyCode.E) && isImposter)
         {
             players = GameObject.FindGameObjectsWithTag("Player");
             float i = float.MaxValue;
