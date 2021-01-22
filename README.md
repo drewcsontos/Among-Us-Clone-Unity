@@ -1,4 +1,4 @@
 # Multiplayer Mafia Game made in Unity with Photon
  
-Note: Sprites not created by Andrew Csontos, all licenses belong to the developer of Among Us: InnerSloth LLC.
+Note: I did not create the majority of these sprites, all licenses belong to the developer of Among Us: InnerSloth LLC.
 
